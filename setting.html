@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <script src="theme-init.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <title>錢錢手帳 App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div>
+        <p class="sub-title">偏好與資料管理</p>
+        <h1>設定</h1>
+      </div>
+      <button class="secondary-btn" onclick="window.location.href='index.html'">返回</button>
+    </header>
+
+    <section class="settings-panel">
+      <div class="settings-card">
+        <div class="settings-card-title">應用程式</div>
+        <ul class="settings-list">
+          <li class="settings-item">
+            <button id="share-app" type="button" class="settings-action-button" data-link="https://zkl1016.github.io/MoneyBook/">
+              <span class="settings-icon"><i class="fa-solid fa-share-nodes"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">分享此 App</span>
+                <span class="settings-item-desc">複製連結以快速分享給朋友</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item">
+            <button id="install-app" type="button" class="settings-action-button">
+              <span class="settings-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">安裝為應用程式</span>
+                <span class="settings-item-desc">在桌面或手機上快速啟動</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item plugin-manage-row">
+            <button id="plugin-manage" type="button" class="settings-action-button plugin-manager-toggle" onclick="window.location.href='plugins.html'">
+              <span class="settings-icon plugin-folder-icon"><i class="fa-solid fa-folder"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">擴充功能管理</span>
+                <span class="settings-item-desc">進入擴充功能管理頁面</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item">
+            <button id="debt-management" type="button" class="settings-action-button plugin-manager-toggle">
+              <span class="settings-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">欠款管理</span>
+                <span class="settings-item-desc">新增、結清或刪除欠款紀錄</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item">
+            <button id="appearance-theme" type="button" class="settings-action-button plugin-manager-toggle" onclick="window.location.href='theme.html'">
+              <span class="settings-icon"><i class="fa-solid fa-palette"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">外觀主題</span>
+                <span class="settings-item-desc">更換應用程式色彩風格</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item settings-toggle-row">
+            <div class="settings-icon"><i class="fa-solid fa-moon"></i></div>
+            <span class="settings-item-text">
+              <span class="settings-item-label">深色模式</span>
+              <span class="settings-item-desc">開啟即自動套用內建深色主題</span>
+            </span>
+            <label class="switch">
+              <input id="theme-toggle" type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-card-title">資料管理</div>
+        <ul class="settings-list">
+          <li class="settings-item">
+            <button id="export-records" class="settings-action-button" type="button">
+              <span class="settings-icon"><i class="fa-solid fa-file-arrow-up"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">匯出資料</span>
+                <span class="settings-item-desc">下載備份 JSON</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item">
+            <button id="import-records" class="settings-action-button" type="button">
+              <span class="settings-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">匯入資料</span>
+                <span class="settings-item-desc">從 JSON 載入帳務紀錄</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
+            </button>
+          </li>
+          <li class="settings-item">
+            <button id="clear-records" class="settings-action-button danger-btn" type="button">
+              <span class="settings-icon"><i class="fa-solid fa-trash-can"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">清除全部紀錄</span>
+                <span class="settings-item-desc">刪除所有記帳資料</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+        <input id="import-file" type="file" accept=".json" hidden>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-card-title">個人化</div>
+        <ul class="settings-list">
+          <li class="settings-item budget-item">
+            <div class="settings-item-text">
+              <span class="settings-item-label">本月預算</span>
+              <input id="budget-input" type="number" placeholder="輸入預算金額">
+            </div>
+            <button id="save-budget" class="primary-btn">儲存</button>
+          </li>
+          <li class="settings-item settings-row-inline">
+            <div class="settings-item-text">
+              <span class="settings-item-label">預設新增類型</span>
+              <select id="default-type">
+                <option value="expense">支出</option>
+                <option value="income">收入</option>
+              </select>
+            </div>
+          </li>
+          <li class="settings-item settings-row-inline">
+            <div class="settings-item-text">
+              <span class="settings-item-label">重設設定</span>
+              <span class="settings-item-desc">恢復預設主題、分類與預設類型</span>
+            </div>
+            <button id="reset-settings" class="secondary-btn">重設</button>
+          </li>
+        </ul>
+        <div class="category-grid">
+          <div>
+            <strong>支出分類</strong>
+            <div class="input-row">
+              <input id="new-expense-category" type="text" placeholder="新增支出分類">
+              <button id="add-expense-category" class="primary-btn">新增</button>
+            </div>
+            <ul id="expense-category-list" class="category-list"></ul>
+          </div>
+          <div>
+            <strong>收入分類</strong>
+            <div class="input-row">
+              <input id="new-income-category" type="text" placeholder="新增收入分類">
+              <button id="add-income-category" class="primary-btn">新增</button>
+            </div>
+            <ul id="income-category-list" class="category-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-copy">趙凱樂製作©2026 版權所有</p>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <i class="fa-solid fa-house"></i><span>首頁</span>
+    </a>
+    <a href="detail.html" class="nav-item">
+      <i class="fa-solid fa-list"></i><span>明細</span>
+    </a>
+    <button class="add-btn" onclick="goToNew()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <a href="stat.html" class="nav-item">
+      <i class="fa-solid fa-chart-pie"></i><span>統計</span>
+    </a>
+    <a href="setting.html" class="nav-item">
+      <i class="fa-solid fa-gear"></i><span>設定</span>
+    </a>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>

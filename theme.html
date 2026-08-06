@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <script src="theme-init.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <title>錢錢手帳 App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>主題套件</h1>
+      <p class="muted">選擇喜歡的佈景主題，套用後會立即更新整個 App 的整體配色。</p>
+    </header>
+
+    <section id="theme-list" class="card-grid">
+      <article class="theme-card" data-pack="default">
+        <div class="theme-swatch default-swatch"></div>
+        <div class="theme-card-body">
+          <h3>預設</h3>
+          <p class="muted">系統預設淺色主題</p>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="apply-theme secondary-btn">套用</button>
+        </div>
+      </article>
+
+      <article class="theme-card" data-pack="ocean">
+        <div class="theme-swatch ocean-swatch"></div>
+        <div class="theme-card-body">
+          <h3>海洋</h3>
+          <p class="muted">深藍色調與清新配色</p>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="apply-theme primary-btn">套用</button>
+        </div>
+      </article>
+
+      <article class="theme-card" data-pack="forest">
+        <div class="theme-swatch forest-swatch"></div>
+        <div class="theme-card-body">
+          <h3>森林</h3>
+          <p class="muted">自然綠搭配沉穩背景</p>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="apply-theme primary-btn">套用</button>
+        </div>
+      </article>
+
+      <article class="theme-card" data-pack="sunset">
+        <div class="theme-swatch sunset-swatch"></div>
+        <div class="theme-card-body">
+          <h3>夕陽</h3>
+          <p class="muted">暖色調與柔和過渡</p>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="apply-theme primary-btn">套用</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="card current-theme-card">
+      <div class="current-theme-head">
+        <h4>目前套用</h4>
+        <span class="current-theme-badge">已保存</span>
+      </div>
+      <p id="current-pack" class="muted">載入中...</p>
+    </section>
+
+    <div class="actions-row">
+      <a href="setting.html" class="secondary-btn">返回設定</a>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <i class="fa-solid fa-house"></i><span>首頁</span>
+    </a>
+    <a href="detail.html" class="nav-item">
+      <i class="fa-solid fa-list"></i><span>明細</span>
+    </a>
+    <button class="add-btn" onclick="goToNew()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <a href="stat.html" class="nav-item">
+      <i class="fa-solid fa-chart-pie"></i><span>統計</span>
+    </a>
+    <a href="setting.html" class="nav-item">
+      <i class="fa-solid fa-gear"></i><span>設定</span>
+    </a>
+  </nav>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentEl = document.getElementById('current-pack');
+      const packLabelMap = {
+        default: '預設',
+        ocean: '海洋',
+        forest: '森林',
+        sunset: '夕陽',
+      };
+
+      const syncThemeCards = () => {
+        const current = loadThemePack();
+        if (currentEl) currentEl.textContent = packLabelMap[current] || current;
+
+        document.querySelectorAll('.theme-card').forEach((card) => {
+          const pack = card.getAttribute('data-pack');
+          const btn = card.querySelector('.apply-theme');
+          const isActive = pack === current;
+          card.classList.toggle('is-active', isActive);
+          if (btn) {
+            btn.textContent = isActive ? '已套用' : '套用';
+            btn.classList.toggle('secondary-btn', !isActive);
+            btn.classList.toggle('primary-btn', isActive);
+          }
+        });
+      };
+
+      syncThemeCards();
+
+      document.querySelectorAll('.theme-card').forEach((card) => {
+        const btn = card.querySelector('.apply-theme');
+        btn?.addEventListener('click', () => {
+          const pack = card.getAttribute('data-pack');
+          saveThemePack(pack);
+          syncThemeCards();
+          alert('主題已套用：' + (packLabelMap[pack] || pack));
+        });
+      });
+    });
+  </script>
+</body>
+</html>

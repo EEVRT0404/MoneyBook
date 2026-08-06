@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <script src="theme-init.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <title>錢錢手帳 App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div>
+        <p class="sub-title">錢錢手帳 APP</p>
+        <h1>新增記帳</h1>
+      </div>
+      <button class="secondary-btn" onclick="window.location.href='index.html'">返回</button>
+    </header>
+
+    <section class="section-block">
+      <div class="type-selector">
+        <label>
+          <input type="radio" name="record-type" value="expense" checked>
+          <span>支出</span>
+        </label>
+        <label>
+          <input type="radio" name="record-type" value="income">
+          <span>收入</span>
+        </label>
+      </div>
+      <input id="item" type="text" placeholder="項目名稱">
+      <div class="input-row">
+        <input id="amount" type="number" placeholder="金額">
+        <select id="category"></select>
+        <input id="date" type="date" style="max-width:160px">
+      </div>
+      <!-- 已移除：符號選單改由分類對應或設定頁編輯，避免重複控制元件 -->
+      <div id="plugin-extra-controls"></div>
+      <input id="note" type="text" placeholder="備註（可留空）">
+      <button class="primary-btn" onclick="addRecord()">新增記帳</button>
+    </section>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <i class="fa-solid fa-house"></i><span>首頁</span>
+    </a>
+    <a href="detail.html" class="nav-item">
+      <i class="fa-solid fa-list"></i><span>明細</span>
+    </a>
+    <button class="add-btn" onclick="goToNew()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <a href="stat.html" class="nav-item">
+      <i class="fa-solid fa-chart-pie"></i><span>統計</span>
+    </a>
+    <a href="setting.html" class="nav-item">
+      <i class="fa-solid fa-gear"></i><span>設定</span>
+    </a>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <script src="theme-init.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <meta charset="UTF-8">
+  <title>錢錢手帳 App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div>
+        <p class="sub-title">錢錢手帳 APP</p>
+        <h1>明細</h1>
+      </div>
+      <button class="secondary-btn" onclick="window.location.href='index.html'">返回</button>
+    </header>
+
+    <section class="section-block">
+      <div class="section-title">篩選與搜尋</div>
+      <div class="filter-row">
+        <select id="filter-type">
+          <option value="">全部類型</option>
+          <option value="income">收入</option>
+          <option value="expense">支出</option>
+        </select>
+        <select id="filter-category">
+          <option value="">全部分類</option>
+        </select>
+        <input id="filter-start" type="date" title="起始日期">
+        <input id="filter-end" type="date" title="結束日期">
+      </div>
+      <input id="filter-search" type="text" placeholder="搜尋項目或備註">
+    </section>
+
+    <section class="section-block">
+      <div class="section-title">記錄列表</div>
+      <ul id="detail-list" class="record-list"></ul>
+      <p id="detail-empty" class="empty-msg">目前沒有符合條件的記錄。</p>
+    </section>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <i class="fa-solid fa-house"></i><span>首頁</span>
+    </a>
+    <a href="detail.html" class="nav-item">
+      <i class="fa-solid fa-list"></i><span>明細</span>
+    </a>
+    <button class="add-btn" onclick="goToNew()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <a href="stat.html" class="nav-item">
+      <i class="fa-solid fa-chart-pie"></i><span>統計</span>
+    </a>
+    <a href="setting.html" class="nav-item">
+      <i class="fa-solid fa-gear"></i><span>設定</span>
+    </a>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
