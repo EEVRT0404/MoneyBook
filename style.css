@@ -403,7 +403,18 @@ button:hover,
 .primary-btn {
   background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
   color: white;
-  box-shadow: 0 10px 18px rgba(79, 140, 255, 0.24);
+  box-shadow: 0 12px 24px rgba(79, 140, 255, 0.3);
+  border: none;
+}
+
+.new-entry-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.new-entry-actions .primary-btn {
+  min-width: 110px;
 }
 
 .secondary-btn {
@@ -425,28 +436,43 @@ button:hover,
 .debt-summary-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .debt-summary-grid .card {
-  padding: 18px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(245,250,255,0.96) 100%);
-  border: 1px solid rgba(79, 140, 255, 0.16);
+  padding: 22px 20px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 249, 255, 0.96) 100%);
+  border: 1px solid rgba(79, 140, 255, 0.12);
+  box-shadow: var(--shadow-soft);
+}
+
+.debt-summary-grid .card::before {
+  display: none;
+}
+
+.debt-summary-grid strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5f5f78;
 }
 
 .debt-summary-value {
-  margin-top: 12px;
-  font-size: 26px;
-  letter-spacing: 0.2px;
+  position: relative;
+  margin: 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  font-weight: 900;
   color: var(--primary);
 }
 
 .debt-actions {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .debt-modal {
@@ -455,84 +481,110 @@ button:hover,
   z-index: 999;
   display: grid;
   place-items: center;
-  padding: 18px;
-  background: rgba(15, 21, 35, 0.52);
+  padding: 20px;
+  background: rgba(18, 42, 91, 0.22);
 }
 
 .debt-modal-panel {
-  width: min(100%, 520px);
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 28px;
-  box-shadow: 0 28px 70px rgba(24, 42, 84, 0.24);
+  width: min(100%, 540px);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 32px;
+  box-shadow: 0 34px 68px rgba(20, 36, 79, 0.18);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .debt-modal-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
-  padding: 22px 24px 0;
+  gap: 12px;
+  padding: 24px 24px 8px;
 }
 
 .debt-modal-header h2 {
   margin: 0;
-  font-size: 22px;
-  letter-spacing: 0.1px;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
 .icon-close {
   background: rgba(17, 24, 39, 0.08);
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   font-size: 24px;
   line-height: 0;
   cursor: pointer;
   color: var(--text);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon-close:hover {
+  transform: scale(1.05);
+  background: rgba(17, 24, 39, 0.14);
 }
 
 .debt-form {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
+  display: grid;
+  gap: 16px;
   padding: 0 24px 24px;
-  margin-bottom: 0;
 }
 
 .debt-form .template-form-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 16px;
 }
 
 .debt-form input[type="text"],
 .debt-form input[type="number"],
 .debt-form input[type="date"] {
-  background: #fff;
-  border-color: rgba(79, 140, 255, 0.16);
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(119, 134, 191, 0.16);
+  background: #fafafb;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.debt-form input[type="text"]:focus,
+.debt-form input[type="number"]:focus,
+.debt-form input[type="date"]:focus {
+  border-color: rgba(79, 140, 255, 0.45);
+  box-shadow: 0 0 0 4px rgba(79, 140, 255, 0.08);
 }
 
 .template-type-group {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 12px;
 }
 
 .template-type-group label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 18px 16px;
   border-radius: 18px;
-  background: rgba(79, 140, 255, 0.08);
-  border: 1px solid rgba(79, 140, 255, 0.14);
+  background: rgba(79, 140, 255, 0.09);
+  border: 1px solid rgba(79, 140, 255, 0.18);
   cursor: pointer;
-  user-select: none;
+  color: var(--text);
+  transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.template-type-group label:hover {
+  transform: translateY(-1px);
 }
 
 .template-type-group input {
@@ -540,21 +592,20 @@ button:hover,
 }
 
 .debt-filter-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .debt-tab-button {
-  flex: 1 1 auto;
-  min-width: 110px;
+  width: 100%;
   text-align: center;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(79, 140, 255, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(119, 134, 191, 0.18);
   border-radius: 999px;
-  padding: 12px 14px;
-  color: var(--text);
+  padding: 12px 16px;
+  color: #2f3754;
   font-weight: 700;
   transition: transform 0.18s ease, background 0.2s ease, border-color 0.2s ease;
 }
@@ -564,9 +615,9 @@ button:hover,
 }
 
 .debt-tab-button.active {
-  background: var(--primary);
-  color: white;
-  border-color: rgba(79, 140, 255, 0.25);
+  background: linear-gradient(180deg, rgba(79, 140, 255, 0.95) 0%, #4f8cff 100%);
+  color: #fff;
+  border-color: rgba(79, 140, 255, 0.35);
 }
 
 .debt-list {
@@ -578,11 +629,11 @@ button:hover,
 }
 
 .debt-item {
-  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(249, 249, 255, 0.98) 100%);
-  border: 1px solid rgba(79, 140, 255, 0.14);
-  border-radius: 24px;
-  padding: 18px;
-  box-shadow: 0 18px 36px rgba(79, 140, 255, 0.08);
+  padding: 20px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(79, 140, 255, 0.12);
+  box-shadow: 0 22px 42px rgba(79, 140, 255, 0.08);
 }
 
 .debt-item.debt-cleared {
@@ -592,32 +643,50 @@ button:hover,
 .debt-item-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 10px;
+  gap: 14px;
   align-items: center;
 }
 
+.debt-item-type {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(79, 140, 255, 0.1);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.debt-item-amount {
+  justify-self: end;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+}
+
 .debt-item-row strong {
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #2f3754;
 }
 
 .debt-item-meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 12px;
   margin-top: 14px;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .debt-item-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .debt-item-actions button {
-  flex: 1 1 45%;
+  flex: 1 1 48%;
 }
 
 .debt-modal.hidden {
@@ -626,12 +695,30 @@ button:hover,
 
 .debt-form .template-actions {
   display: flex;
-  gap: 12px;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .debt-form .template-actions button {
-  min-width: 120px;
+  min-width: 130px;
+  padding: 14px 22px;
+}
+
+@media (max-width: 720px) {
+  .debt-summary-grid,
+  .debt-form .template-form-row,
+  .debt-item-row,
+  .debt-item-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .debt-item-row {
+    align-items: flex-start;
+  }
+
+  .debt-filter-row {
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 720px) {
@@ -842,6 +929,13 @@ html.theme-dark .nav-item.active {
   text-align: center;
 }
 
+.ver {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
 .footer-copy {
   margin: 40px 0 0;
   text-align: center;
@@ -872,12 +966,12 @@ html.theme-dark .nav-item.active {
 
 .theme-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 34px rgba(79, 140, 255, 0.16);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.12);
 }
 
 .theme-card.is-active {
-  border-color: rgba(41, 157, 92, 0.5);
-  box-shadow: 0 0 0 3px rgba(74, 185, 126, 0.16), 0 16px 30px rgba(79, 140, 255, 0.16);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08), 0 16px 30px rgba(0, 0, 0, 0.12);
 }
 
 .theme-card-body {

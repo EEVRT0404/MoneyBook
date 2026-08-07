@@ -802,7 +802,7 @@ function renderDebtPage() {
       </div>
     </div>
     <div class="debt-actions">
-      <button id="toggle-debt-form" class="primary-btn">新增欠款</button>
+      <button id="toggle-debt-form" class="debt-tab-button active">新增欠款</button>
     </div>
     <div id="debt-modal" class="debt-modal hidden">
       <div class="debt-modal-panel">
@@ -829,7 +829,7 @@ function renderDebtPage() {
             <input id="debt-note" type="text" placeholder="備註（選填）">
           </div>
           <div class="template-actions">
-            <button id="save-debt" class="primary-btn">儲存欠款</button>
+            <button id="save-debt" class="debt-tab-button">儲存欠款</button>
           </div>
         </div>
       </div>
@@ -849,7 +849,7 @@ function renderDebtPage() {
   const debtForm = document.getElementById('debt-form');
   const debtList = document.getElementById('debt-list');
   const debtEmpty = document.getElementById('debt-empty');
-  const filterButtons = Array.from(document.querySelectorAll('.debt-tab-button'));
+  const filterButtons = Array.from(document.querySelectorAll('.debt-filter-row .debt-tab-button'));
   let activeFilter = 'all';
 
   const renderDebtList = () => {
