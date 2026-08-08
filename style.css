@@ -469,6 +469,13 @@ button:hover,
   color: var(--primary);
 }
 
+#debt-page-content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
 .debt-actions {
   display: flex;
   justify-content: flex-end;
@@ -478,20 +485,24 @@ button:hover,
 .debt-modal {
   position: fixed;
   inset: 0;
-  z-index: 999;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 2147483648;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  background: rgba(18, 42, 91, 0.22);
+  background: transparent;
 }
 
 .debt-modal-panel {
   width: min(100%, 540px);
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 32px;
-  box-shadow: 0 34px 68px rgba(20, 36, 79, 0.18);
+  box-shadow: 0 28px 52px rgba(20, 36, 79, 0.12);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
 }
 
 .debt-modal-header {
@@ -539,6 +550,10 @@ button:hover,
   gap: 14px;
 }
 
+.debt-form .template-form-row .template-type-group {
+  grid-column: 1 / -1;
+}
+
 .debt-form input[type="text"],
 .debt-form input[type="number"],
 .debt-form input[type="date"] {
@@ -561,34 +576,49 @@ button:hover,
 }
 
 .template-type-group {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(180px, 1fr));
-  gap: 12px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
 }
 
 .template-type-group label {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 10px;
-  min-height: 64px;
-  padding: 18px 16px;
-  border-radius: 18px;
-  background: rgba(79, 140, 255, 0.09);
-  border: 1px solid rgba(79, 140, 255, 0.18);
+  min-height: 56px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(79, 140, 255, 0.16);
   cursor: pointer;
   color: var(--text);
-  transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease;
-  white-space: nowrap;
+  font-weight: 700;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.18s ease;
+}
+
+.template-type-group input {
+  display: none;
+}
+
+.template-type-group input:checked + span {
+  color: var(--primary);
 }
 
 .template-type-group label:hover {
   transform: translateY(-1px);
+  background: rgba(255,255,255,1);
 }
 
 .template-type-group input {
-  accent-color: var(--primary);
+  display: none;
+}
+
+.template-type-group input:checked + span {
+  color: var(--primary);
 }
 
 .debt-filter-row {
@@ -630,63 +660,97 @@ button:hover,
 
 .debt-item {
   padding: 20px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.94);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(79, 140, 255, 0.12);
-  box-shadow: 0 22px 42px rgba(79, 140, 255, 0.08);
+  box-shadow: 0 24px 48px rgba(79, 140, 255, 0.12);
 }
 
 .debt-item.debt-cleared {
   opacity: 0.72;
 }
 
-.debt-item-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 14px;
+.debt-item-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
   align-items: center;
 }
 
-.debt-item-type {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(79, 140, 255, 0.1);
+.debt-item-head-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.debt-item-avatar {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(79, 140, 255, 0.14);
   color: var(--primary);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.debt-item-head-right {
+  display: grid;
+  gap: 6px;
+  text-align: right;
 }
 
 .debt-item-amount {
-  justify-self: end;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 18px;
+  font-weight: 900;
 }
 
-.debt-item-row strong {
-  font-size: 16px;
-  font-weight: 800;
-  color: #2f3754;
+.debt-item-amount.income {
+  color: var(--success);
 }
 
-.debt-item-meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+.debt-item-amount.expense {
+  color: var(--danger);
+}
+
+.debt-item-date {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.debt-item-subtitle {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.debt-item-note {
+  margin: 18px 0 0;
   color: var(--text-muted);
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .debt-item-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
-  flex-wrap: wrap;
   margin-top: 18px;
 }
 
+.debt-item-actions .primary-btn {
+  min-width: 0;
+}
+
+.debt-item-actions .secondary-btn {
+  min-width: 96px;
+}
+
 .debt-item-actions button {
-  flex: 1 1 48%;
+  padding: 14px 16px;
 }
 
 .debt-modal.hidden {
@@ -927,6 +991,41 @@ html.theme-dark .nav-item.active {
   margin: 14px 0 0;
   color: var(--text-muted);
   text-align: center;
+}
+
+.debt-list {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: 260px;
+}
+
+.debt-empty-content {
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  gap: 12px;
+  min-height: 220px;
+  width: 100%;
+  padding: 18px 12px 12px;
+}
+
+.debt-empty-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: rgba(79, 140, 255, 0.12);
+  color: var(--primary);
+  border-radius: 50%;
+  font-size: 28px;
+}
+
+#debt-empty .empty-msg {
+  margin: 0;
+  max-width: 280px;
 }
 
 .ver {

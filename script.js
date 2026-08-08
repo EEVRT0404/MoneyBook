@@ -791,16 +791,6 @@ function renderDebtPage() {
     .reduce((sum, record) => sum + Number(record.amount), 0);
 
   pageContent.innerHTML = `
-    <div class="debt-summary-grid">
-      <div class="card">
-        <strong>別人欠我</strong>
-        <div class="debt-summary-value">NT$${formatNumber(owedToMeTotal)}</div>
-      </div>
-      <div class="card">
-        <strong>我欠別人</strong>
-        <div class="debt-summary-value">NT$${formatNumber(owedByMeTotal)}</div>
-      </div>
-    </div>
     <div class="debt-actions">
       <button id="toggle-debt-form" class="debt-tab-button active">新增欠款</button>
     </div>
@@ -816,8 +806,8 @@ function renderDebtPage() {
         <div id="debt-form" class="debt-form">
           <div class="template-form-row">
             <div class="template-type-group">
-              <label><input type="radio" name="debt-type" value="owedToMe" checked> 別人欠我</label>
-              <label><input type="radio" name="debt-type" value="owedByMe"> 我欠別人</label>
+              <label><input type="radio" name="debt-type" value="owedToMe" checked><span>別人欠我</span></label>
+              <label><input type="radio" name="debt-type" value="owedByMe"><span>我欠別人</span></label>
             </div>
           </div>
           <div class="template-form-row">
@@ -864,25 +854,39 @@ function renderDebtPage() {
 
     if (!filtered.length) {
       debtList.innerHTML = '';
-      debtEmpty.textContent = '目前沒有對應的欠款紀錄';
+      debtEmpty.innerHTML = `
+        <div class="debt-empty-content">
+          <div class="debt-empty-icon">💤</div>
+          <p class="empty-msg">目前沒有欠款紀錄，快新增一筆開始管理吧！</p>
+          <button id="open-debt-form" class="primary-btn">新增欠款</button>
+        </div>
+      `;
+      document.getElementById('open-debt-form')?.addEventListener('click', () => {
+        debtModal?.classList.remove('hidden');
+      });
       return;
     }
 
     debtEmpty.textContent = '';
     debtList.innerHTML = filtered.map((record) => `
       <li class="debt-item ${record.cleared ? 'debt-cleared' : ''}">
-        <div class="debt-item-row">
-          <span class="debt-item-type">${formatDebtLabel(record.type)}</span>
-          <strong>${record.person}</strong>
-          <span class="debt-item-amount">NT$${formatNumber(record.amount)}</span>
+        <div class="debt-item-header">
+          <div class="debt-item-head-left">
+            <span class="debt-item-avatar">${String(record.person || '？').trim().slice(0, 1)}</span>
+            <div>
+              <strong>${record.person || '未知對象'}</strong>
+              <span class="debt-item-subtitle">${formatDebtLabel(record.type)}</span>
+            </div>
+          </div>
+          <div class="debt-item-head-right">
+            <span class="debt-item-amount ${record.type === 'owedToMe' ? 'income' : 'expense'}">NT$${formatNumber(record.amount)}</span>
+            <span class="debt-item-date">${formatRecordDate(record.date)}</span>
+          </div>
         </div>
-        <div class="debt-item-row debt-item-meta">
-          <span>${formatRecordDate(record.date)}</span>
-          <span>${record.note || '無備註'}</span>
-        </div>
-        <div class="debt-item-actions">
-          <button class="secondary-btn debt-toggle-clear" data-id="${record.id}">${record.cleared ? '取消結清' : '結清'}</button>
-          <button class="danger-btn debt-delete" data-id="${record.id}">刪除</button>
+        <p class="debt-item-note">${record.note || '無備註'}</p>
+        <div class="debt-item-actions debt-item-actions-row">
+          <button class="primary-btn debt-toggle-clear" data-id="${record.id}">${record.cleared ? '取消結清' : '結清'}</button>
+          <button class="secondary-btn debt-delete" data-id="${record.id}">刪除</button>
         </div>
       </li>
     `).join('');
