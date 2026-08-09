@@ -25,10 +25,10 @@
         <div class="settings-card-title">應用程式</div>
         <ul class="settings-list">
           <li class="settings-item">
-            <button id="share-app" type="button" class="settings-action-button" data-link="https://zkl1016.github.io/MoneyBook/">
+            <button id="share-app" type="button" class="settings-action-button" data-link="https://eevrt0404.github.io/MoneyBook/">
               <span class="settings-icon"><i class="fa-solid fa-share-nodes"></i></span>
               <span class="settings-item-text">
-                <span class="settings-item-label">分享此 App</span>
+                <span class="settings-item-label">複製網址</span>
                 <span class="settings-item-desc">複製連結以快速分享給朋友</span>
               </span>
               <i class="fa-solid fa-chevron-right settings-item-action"></i>
@@ -50,16 +50,6 @@
               <span class="settings-item-text">
                 <span class="settings-item-label">擴充功能管理</span>
                 <span class="settings-item-desc">進入擴充功能管理頁面</span>
-              </span>
-              <i class="fa-solid fa-chevron-right settings-item-action"></i>
-            </button>
-          </li>
-          <li class="settings-item">
-            <button id="debt-management" type="button" class="settings-action-button plugin-manager-toggle">
-              <span class="settings-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
-              <span class="settings-item-text">
-                <span class="settings-item-label">欠款管理</span>
-                <span class="settings-item-desc">新增、結清或刪除欠款紀錄</span>
               </span>
               <i class="fa-solid fa-chevron-right settings-item-action"></i>
             </button>
@@ -111,6 +101,13 @@
               <i class="fa-solid fa-chevron-right settings-item-action"></i>
             </button>
           </li>
+        </ul>
+        <input id="import-file" type="file" accept=".json" hidden>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-card-title">開發人員選項(沒事別亂按)</div>
+        <ul class="settings-list">
           <li class="settings-item">
             <button id="clear-records" class="settings-action-button danger-btn" type="button">
               <span class="settings-icon"><i class="fa-solid fa-trash-can"></i></span>
@@ -118,6 +115,23 @@
                 <span class="settings-item-label">清除全部紀錄</span>
                 <span class="settings-item-desc">刪除所有記帳資料</span>
               </span>
+            </button>
+          </li>
+        </ul>
+        <input id="import-file" type="file" accept=".json" hidden>
+      </div>
+
+            <div class="settings-card">
+        <div class="settings-card-title">測試中(比較不穩定)</div>
+        <ul class="settings-list">
+          <li class="settings-item">
+            <button id="debt-management" type="button" class="settings-action-button plugin-manager-toggle">
+              <span class="settings-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+              <span class="settings-item-text">
+                <span class="settings-item-label">欠款管理</span>
+                <span class="settings-item-desc">新增、結清或刪除欠款紀錄</span>
+              </span>
+              <i class="fa-solid fa-chevron-right settings-item-action"></i>
             </button>
           </li>
         </ul>
@@ -171,7 +185,7 @@
         </div>
       </div>
     </section>
-    <p class="ver">版本:2.0.22</p>
+    <p class="ver">版本:2.0.23</p>
     <p class="footer-copy">趙凱樂製作©2026 版權所有</p>
   </div>
 

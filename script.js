@@ -48,6 +48,17 @@ const themePackPalette = {
     appAccentRight: 'rgba(102, 119, 248, 0.2)',
     bottomNavBg: 'rgba(255, 255, 255, 0.92)',
     bottomNavShadow: '0 -6px 24px rgba(76, 110, 181, 0.12)',
+    primaryShadow: 'rgba(79, 140, 255, 0.3)',
+    secondaryBg: 'rgba(100, 115, 240, 0.08)',
+    secondaryBorder: 'rgba(100, 115, 240, 0.15)',
+    dangerBg: 'rgba(255, 95, 106, 0.08)',
+    dangerBorder: 'rgba(255, 95, 106, 0.25)',
+    btnBorderLight: 'rgba(79, 140, 255, 0.14)',
+    btnShadowLight: '0 6px 18px rgba(79, 140, 255, 0.08)',
+    btnHoverSoft: 'rgba(79, 140, 255, 0.08)',
+    operatorBg: 'rgba(79, 140, 255, 0.12)',
+    activeTabPrimaryLight: 'rgba(79, 140, 255, 0.95)',
+    activeTabBorder: 'rgba(79, 140, 255, 0.35)',
   },
   ocean: {
     bg: '#f4fbff',
@@ -68,6 +79,17 @@ const themePackPalette = {
     appAccentRight: 'rgba(32, 108, 198, 0.22)',
     bottomNavBg: 'rgba(255, 255, 255, 0.92)',
     bottomNavShadow: '0 -6px 24px rgba(42, 120, 204, 0.14)',
+    primaryShadow: 'rgba(42, 120, 204, 0.3)',
+    secondaryBg: 'rgba(78, 155, 216, 0.08)',
+    secondaryBorder: 'rgba(78, 155, 216, 0.15)',
+    dangerBg: 'rgba(238, 107, 115, 0.08)',
+    dangerBorder: 'rgba(238, 107, 115, 0.25)',
+    btnBorderLight: 'rgba(42, 120, 204, 0.14)',
+    btnShadowLight: '0 6px 18px rgba(42, 120, 204, 0.08)',
+    btnHoverSoft: 'rgba(42, 120, 204, 0.08)',
+    operatorBg: 'rgba(42, 120, 204, 0.12)',
+    activeTabPrimaryLight: 'rgba(42, 120, 204, 0.95)',
+    activeTabBorder: 'rgba(42, 120, 204, 0.35)',
   },
   forest: {
     bg: '#f4fbf7',
@@ -88,6 +110,17 @@ const themePackPalette = {
     appAccentRight: 'rgba(58, 149, 113, 0.2)',
     bottomNavBg: 'rgba(255, 255, 255, 0.92)',
     bottomNavShadow: '0 -6px 24px rgba(34, 139, 102, 0.16)',
+    primaryShadow: 'rgba(34, 139, 102, 0.3)',
+    secondaryBg: 'rgba(89, 179, 125, 0.08)',
+    secondaryBorder: 'rgba(89, 179, 125, 0.15)',
+    dangerBg: 'rgba(223, 91, 91, 0.08)',
+    dangerBorder: 'rgba(223, 91, 91, 0.25)',
+    btnBorderLight: 'rgba(34, 139, 102, 0.14)',
+    btnShadowLight: '0 6px 18px rgba(34, 139, 102, 0.08)',
+    btnHoverSoft: 'rgba(34, 139, 102, 0.08)',
+    operatorBg: 'rgba(34, 139, 102, 0.12)',
+    activeTabPrimaryLight: 'rgba(34, 139, 102, 0.95)',
+    activeTabBorder: 'rgba(34, 139, 102, 0.35)',
   },
   sunset: {
     bg: '#fff8f4',
@@ -108,6 +141,17 @@ const themePackPalette = {
     appAccentRight: 'rgba(216, 116, 59, 0.2)',
     bottomNavBg: 'rgba(255, 255, 255, 0.92)',
     bottomNavShadow: '0 -6px 24px rgba(216, 116, 59, 0.16)',
+    primaryShadow: 'rgba(216, 116, 59, 0.3)',
+    secondaryBg: 'rgba(240, 164, 90, 0.08)',
+    secondaryBorder: 'rgba(240, 164, 90, 0.15)',
+    dangerBg: 'rgba(231, 104, 102, 0.08)',
+    dangerBorder: 'rgba(231, 104, 102, 0.25)',
+    btnBorderLight: 'rgba(216, 116, 59, 0.14)',
+    btnShadowLight: '0 6px 18px rgba(216, 116, 59, 0.08)',
+    btnHoverSoft: 'rgba(216, 116, 59, 0.08)',
+    operatorBg: 'rgba(216, 116, 59, 0.12)',
+    activeTabPrimaryLight: 'rgba(216, 116, 59, 0.95)',
+    activeTabBorder: 'rgba(216, 116, 59, 0.35)',
   },
 };
 
@@ -857,7 +901,7 @@ function renderDebtPage() {
       debtEmpty.innerHTML = `
         <div class="debt-empty-content">
           <div class="debt-empty-icon">💤</div>
-          <p class="empty-msg">目前沒有欠款紀錄，快新增一筆開始管理吧！</p>
+          <p class="empty-msg">目前沒有欠款紀錄！</p>
           <button id="open-debt-form" class="primary-btn">新增欠款</button>
         </div>
       `;
@@ -1006,7 +1050,7 @@ function renderCategoryLists() {
 
   expenseList.querySelectorAll('[data-remove-expense]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (expenseCategories.length <= 1) return showToast('至少需保留一個支出分類', 'warning');
+      if (expenseCategories.length <= 1) return showToast('請至少需保留一個支出分類！', 'warning');
       expenseCategories.splice(Number(btn.dataset.removeExpense), 1);
       saveCategoryLists();
       renderCategoryLists();
@@ -1016,7 +1060,7 @@ function renderCategoryLists() {
 
   incomeList.querySelectorAll('[data-remove-income]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (incomeCategories.length <= 1) return showToast('至少需保留一個收入分類', 'warning');
+      if (incomeCategories.length <= 1) return showToast('請至少需保留一個收入分類！', 'warning');
       incomeCategories.splice(Number(btn.dataset.removeIncome), 1);
       saveCategoryLists();
       renderCategoryLists();
@@ -1281,7 +1325,7 @@ window.addEventListener('DOMContentLoaded', initPage);
 const shareAppBtn = document.getElementById('share-app');
 if (shareAppBtn) {
   shareAppBtn.addEventListener('click', async () => {
-    const link = shareAppBtn.dataset.link || 'https://eevrt0404.github.io/CashJournal/';
+    const link = shareAppBtn.dataset.link || 'https://eevrt0404.github.io/MoneyBook/';
     try {
       await navigator.clipboard.writeText(link);
       showToast('連結已複製', 'success');
