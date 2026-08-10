@@ -60,6 +60,26 @@
       bottomNavBg: 'rgba(255, 255, 255, 0.92)',
       bottomNavShadow: '0 -6px 24px rgba(34, 139, 102, 0.16)'
     },
+    purple: {
+      bg: '#f8f4ff',
+      text: '#4b2e83',
+      textMuted: '#7a60a8',
+      primary: '#6a4bb0',
+      secondary: '#8a6bc0',
+      success: '#5ca590',
+      danger: '#e76866',
+      cardBorder: 'rgba(106, 75, 176, 0.18)',
+      panel: 'rgba(255, 255, 255, 0.9)',
+      soft: 'rgba(106, 75, 176, 0.08)',
+      shadowSoft: '0 16px 40px rgba(106, 75, 176, 0.16)',
+      shadowStrong: '0 20px 48px rgba(75, 43, 128, 0.18)',
+      appBgTop: '#f8f4ff',
+      appBgBottom: '#eae4ff',
+      appAccentLeft: 'rgba(138, 107, 192, 0.32)',
+      appAccentRight: 'rgba(106, 75, 176, 0.2)',
+      bottomNavBg: 'rgba(255, 255, 255, 0.92)',
+      bottomNavShadow: '0 -6px 24px rgba(106, 75, 176, 0.16)'
+    },
     sunset: {
       bg: '#fff8f4',
       text: '#72442d',
