@@ -99,6 +99,26 @@
       appAccentRight: 'rgba(216, 116, 59, 0.2)',
       bottomNavBg: 'rgba(255, 255, 255, 0.92)',
       bottomNavShadow: '0 -6px 24px rgba(216, 116, 59, 0.16)'
+    },
+    red: {
+      bg: '#f8f4ff',
+      text: '#31181d',
+      textMuted: '#31181d',
+      primary: '#ff597a',
+      secondary: '#E3002C',
+      success: '#5ca590',
+      danger: '#e76866',
+      cardBorder: 'rgba(106, 75, 176, 0.18)',
+      panel: 'rgba(255, 255, 255, 0.9)',
+      soft: 'rgba(106, 75, 176, 0.08)',
+      shadowSoft: '0 16px 40px rgba(106, 75, 176, 0.16)',
+      shadowStrong: '0 20px 48px rgba(75, 43, 128, 0.18)',
+      appBgTop: '#f8f4ff',
+      appBgBottom: '#eae4ff',
+      appAccentLeft: 'rgba(138, 107, 192, 0.32)',
+      appAccentRight: 'rgba(106, 75, 176, 0.2)',
+      bottomNavBg: 'rgba(255, 255, 255, 0.92)',
+      bottomNavShadow: '0 -6px 24px rgba(106, 75, 176, 0.16)'
     }
   };
 

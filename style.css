@@ -1158,7 +1158,7 @@ html.theme-dark .nav-item.active {
 }
 
 .default-swatch {
-  background: linear-gradient(135deg, #f7fbff, #dcecff);
+  background: linear-gradient(135deg, #4f8cff, #a164f0);
 }
 
 .ocean-swatch {
@@ -1172,6 +1172,16 @@ html.theme-dark .nav-item.active {
 .sunset-swatch {
   background: linear-gradient(135deg, #f4a766, #ee7d45);
 }
+
+.red-swatch {
+  background: linear-gradient(135deg, #E3002C, #ff597a);
+}
+
+.purple-swatch {
+  background: linear-gradient(135deg, #B39DDB, #4b2e83);
+}
+
+
 
 .card-actions,
 .actions-row {

@@ -15,7 +15,7 @@
 
 ## 快速開始
 
-1. 進入以下連結:[https://eevrt0404.github.io/MoneyBook/](https://eevrt0404.github.io/MoneyBook/)。
+1. 進入以下連結:[https://zkl1016.github.io/MoneyBook/](https://zkl1016.github.io/MoneyBook/)。
 2. 在瀏覽器中新增記錄，或前往設定頁調整預算、分類與主題。
 
 ## 本地開發說明
